@@ -1,0 +1,13 @@
+a, a:visited, a:hover, a:active {
+  text-decoration: none;
+  color: lightgrey;
+}
+a.active {
+  color: white;
+}
+md-list-item{
+  margin: 0 10px;
+}
+.fill-remaining-space {
+  flex: 1 1 auto;
+}

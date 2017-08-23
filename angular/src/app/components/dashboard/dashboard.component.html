@@ -1,0 +1,60 @@
+<md-card>
+  <md-card-header>
+    <md-card-title><h1>Zillow API Example</h1></md-card-title>
+    <md-card-subtitle><h3>Propieties available at West 44th St, New York, NY 10001, USA</h3></md-card-subtitle>
+  </md-card-header>
+  <md-card-content>
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutWrap fxLayoutAlign="space-around center">
+      <md-card class="property"
+               [ngClass.md]="{'property-md': true}"
+               [ngClass.lg]="{'property-lg': true}"
+               [ngClass.gt-lg]="{'property-gt-lg': true}"
+               *ngFor="let data of zillowData">
+        <md-card-header>
+          <md-card-title>Type: {{ data.useCode[0] }}</md-card-title>
+          <md-card-subtitle>{{ data.address[0].street }}, {{data.address[0].zipcode}}, {{ data.address[0].city }}, {{ data.address[0].state }}</md-card-subtitle>
+        </md-card-header>
+
+        <md-card-content fxLayoutAlign="space-around center">
+          <ul>
+            <li *ngIf="data.bathrooms">Bathrooms: {{ data.bathrooms }}</li>
+            <li *ngIf="data.bedrooms">Bedrooms: {{ data.bedrooms }}</li>
+            <li *ngIf="data.totalRooms">totalRooms: {{ data.totalRooms }}</li>
+            <li *ngIf="data.lotSizeSqFt">lotSizeSqFt: {{ data.lotSizeSqFt }}</li>
+            <li *ngIf="data.finishedSqFt">finishedSqFt: {{ data.finishedSqFt }}</li>
+            <li *ngIf="data.yearBuilt">yearBuilt: {{ data.yearBuilt }}</li>
+            <li *ngIf="data.lastSoldPrice">lastSoldPrice: {{ data.lastSoldPrice[0]._ }} {{data.lastSoldPrice[0].$.currency}}</li>
+            <li *ngIf="data.lastSoldDate">lastSoldDate: {{ data.lastSoldDate }}</li>
+            <li *ngIf="data.taxAssessment">taxAssessment: {{ data.taxAssessment }}</li>
+            <li *ngIf="data.taxAssessmentYear">taxAssessmentYear: {{ data.taxAssessmentYear }}</li>
+          </ul>
+
+          <ul>
+              <span *ngIf="data.zestimate">
+                <span *ngIf="data.zestimate[0].amount">
+                  <li *ngIf="data.zestimate[0].amount[0]._">
+                    Sell estimates: {{ data.zestimate[0].amount[0]._ }} {{ data.zestimate[0].amount[0].$.currency }}
+                  </li>
+                </span>
+              </span>
+            <span *ngIf="data.rentzestimate">
+                <span *ngIf="data.rentzestimate[0].amount">
+                  <li *ngIf="data.rentzestimate[0].amount[0]._">
+                    Rent estimates: {{ data.rentzestimate[0].amount[0]._ }} {{ data.rentzestimate[0].amount[0].$.currency }}
+                  </li>
+                </span>
+              </span>
+          </ul>
+
+
+        </md-card-content>
+
+        <md-card-actions>
+          <md-button-toggle><md-icon>favorite</md-icon></md-button-toggle>
+          <!--button md-raised-button><md-icon>share</md-icon></button-->
+          <button md-button routerLink="">See details<md-icon>navigate_next</md-icon></button>
+        </md-card-actions>
+      </md-card>
+    </div>
+  </md-card-content>
+</md-card>

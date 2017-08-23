@@ -1,0 +1,11 @@
+<md-toolbar color="primary">
+  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+  <span class="fill-remaining-space"></span>
+  <md-nav-list>
+    <md-list-item> <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="authService.loggedIn()"> Dashboard </a></md-list-item>
+    <md-list-item> <a routerLink="/profile" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="authService.loggedIn()"> Profile </a></md-list-item>
+    <md-list-item> <a routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="!authService.loggedIn()"> Login </a></md-list-item>
+    <md-list-item> <a routerLink="/register" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="!authService.loggedIn()"> Register </a></md-list-item>
+    <md-list-item> <a (click)="onLogoutClick()" href="#" *ngIf="authService.loggedIn()"> Logout </a></md-list-item>
+  </md-nav-list>
+</md-toolbar>

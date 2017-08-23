@@ -1,0 +1,14 @@
+.property{
+  margin-top: 40px;
+  background-color: #F8F8FF;
+  width: 80%;
+}
+.property-md{
+  width: 40%;
+}
+.property-lg{
+  width: 20%;
+}
+.property-gt-lg{
+  width: 15%;
+}

@@ -1,0 +1,35 @@
+<form (submit)="onRegisterSubmit(nameFormControl, emailFormControl, passwordFormControl)" fxLayout="column" fxLayoutAlign.gt-sm="center center">
+
+  <md-card fxLayout="column" fxLayoutAlign.gt-sm="space-between stretch" [ngStyle.gt-sm]="{'width': '30%'}">
+    <h2>User registration</h2>
+    <md-input-container>
+      <input type="text" [(ngModel)]="name" name="name" [formControl]="nameFormControl" mdInput placeholder="Name">
+      <md-error *ngIf="nameFormControl.hasError('required')">
+        Name is required
+      </md-error>
+    </md-input-container>
+    <md-input-container>
+      <input type="email" [(ngModel)]="email" name="email" [formControl]="emailFormControl" mdInput placeholder="Email">
+      <md-error *ngIf="emailFormControl.hasError('pattern')">
+        Please enter a valid email address
+      </md-error>
+      <md-error *ngIf="emailFormControl.hasError('required')">
+        Email is <strong>required</strong>
+      </md-error>
+    </md-input-container>
+    <md-input-container>
+      <input type="password" [(ngModel)]="password" name="password" [formControl]="passwordFormControl" mdInput placeholder="Password">
+      <md-error *ngIf="passwordFormControl.hasError('required')">
+        Password is required
+      </md-error>
+    </md-input-container>
+    <br/>
+    <div fxLayout="column" fxLayoutAlign="end center">
+
+    <button type="submit" md-raised-button color="accent">REGISTER</button>
+      <br/>
+      <a routerLink="/login">Do you have an account already?</a>
+    </div>
+  </md-card>
+
+</form>
